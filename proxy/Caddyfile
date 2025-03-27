@@ -1,0 +1,14 @@
+mughal.pro {
+    # Global settings
+    tls internal
+    
+    # Homarr dashboard
+    handle_path /homarr* {
+        reverse_proxy homarr:7575
+    }
+    
+    # Root path
+    handle {
+        reverse_proxy homarr:7575
+    }
+}

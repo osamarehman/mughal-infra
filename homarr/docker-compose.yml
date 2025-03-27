@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  homarr:
+    container_name: homarr
+    image: ghcr.io/homarr-labs/homarr:latest
+    restart: unless-stopped
+    volumes:
+      - ./appdata:/appdata
+    environment:
+      - SECRET_ENCRYPTION_KEY=${ENCRYPTION_KEY}
+      - DOCKER_HOST=tcp://socket-proxy:2375
+    networks:
+      - mughal-network
+
+networks:
+  mughal-network:
+    external: true
